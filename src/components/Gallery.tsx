@@ -2,22 +2,24 @@ import React from 'react';
 import { motion } from 'motion/react';
 
 const avinashImages = [
-  "/photo_2026-04-11_08-25-37.jpg",
-  "/photo_2026-04-11_08-25-39.jpg",
-  "/photo_2026-04-11_08-25-41.jpg",
-  "/photo_2026-04-11_08-25-42.jpg",
-  "/photo_2026-04-11_08-25-43.jpg",
-  "/photo_2026-04-11_08-25-44.jpg"
+  "photo_2026-04-11_08-25-37.jpg",
+  "photo_2026-04-11_08-25-39.jpg",
+  "photo_2026-04-11_08-25-41.jpg",
+  "photo_2026-04-11_08-25-42.jpg",
+  "photo_2026-04-11_08-25-43.jpg",
+  "photo_2026-04-11_08-25-44.jpg"
 ];
 
 const babitaImages = [
-  "/photo_2026-04-11_08-42-34.jpg",
-  "/photo_2026-04-11_08-42-36.jpg",
-  "/FB_IMG_1730178591724.jpg",
-  "/FB_IMG_1733313241462.jpg",
-  "/IMG-20220127-WA0002.jpg",
-  "/Remini20220429053933729.jpg"
+  "photo_2026-04-11_08-42-34.jpg",
+  "photo_2026-04-11_08-42-36.jpg",
+  "FB_IMG_1730178591724.jpg",
+  "FB_IMG_1733313241462.jpg",
+  "IMG-20220127-WA0002.jpg",
+  "Remini20220429053933729.jpg"
 ];
+
+const getPath = (name: string) => `${import.meta.env.BASE_URL}${name}`;
 
 export const Gallery: React.FC = () => {
   return (
@@ -44,7 +46,7 @@ export const Gallery: React.FC = () => {
               <div className="flex gap-2 aspect-video overflow-hidden rounded-2xl relative">
                 <div className="w-1/2 overflow-hidden">
                   <img 
-                    src={src} 
+                    src={getPath(src)} 
                     alt={`Avinash ${index + 1}`}
                     referrerPolicy="no-referrer"
                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
@@ -52,7 +54,7 @@ export const Gallery: React.FC = () => {
                 </div>
                 <div className="w-1/2 overflow-hidden">
                   <img 
-                    src={babitaImages[index]} 
+                    src={getPath(babitaImages[index])} 
                     alt={`Babita ${index + 1}`}
                     referrerPolicy="no-referrer"
                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"

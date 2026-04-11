@@ -99,7 +99,7 @@ export const Proposal: React.FC = () => {
               className="mb-8 glass p-4 rounded-[2rem] inline-block shadow-2xl"
             >
               <img 
-                src="/photo_2026-04-11_08-25-42.jpg" 
+                src={`${import.meta.env.BASE_URL}photo_2026-04-11_08-25-42.jpg`} 
                 alt="Our Celebration" 
                 className="w-64 h-64 object-cover rounded-[1.5rem]"
               />
