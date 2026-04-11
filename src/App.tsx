@@ -10,7 +10,7 @@ import { FloatingHearts } from './components/FloatingHearts';
 import { Timeline } from './components/Timeline';
 import { Gallery } from './components/Gallery';
 import { Proposal } from './components/Proposal';
-import { cn } from './lib/utils';
+import { cn, getAssetPath } from './lib/utils';
 
 export default function App() {
   const [isLoading, setIsLoading] = useState(true);
@@ -92,7 +92,7 @@ export default function App() {
           >
             <div className="absolute inset-0 z-0">
               <img 
-                src={`${import.meta.env.BASE_URL}photo_2026-04-11_08-25-37.jpg`} 
+                src={getAssetPath('photo_2026-04-11_08-25-37.jpg')} 
                 alt="Background" 
                 className="w-full h-full object-cover opacity-20 scale-110 blur-sm"
               />
@@ -142,7 +142,7 @@ export default function App() {
             <section className="h-screen flex flex-col items-center justify-center text-center px-4 relative overflow-hidden">
               <div className="absolute inset-0 z-0">
                 <img 
-                  src={`${import.meta.env.BASE_URL}photo_2026-04-11_08-25-39.jpg`} 
+                  src={getAssetPath('photo_2026-04-11_08-25-39.jpg')} 
                   alt="Hero Background" 
                   className="w-full h-full object-cover opacity-10 scale-105"
                 />
@@ -193,7 +193,7 @@ export default function App() {
                   className="aspect-video glass rounded-3xl overflow-hidden relative group cursor-pointer"
                 >
                   <img 
-                    src={`${import.meta.env.BASE_URL}photo_2026-04-11_08-25-41.jpg`} 
+                    src={getAssetPath('photo_2026-04-11_08-25-41.jpg')} 
                     alt="Our Moment" 
                     className="w-full h-full object-cover opacity-80 group-hover:scale-105 transition-transform duration-700"
                   />

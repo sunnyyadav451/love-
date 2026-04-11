@@ -2,11 +2,23 @@ import React, { useState, useRef } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import confetti from 'canvas-confetti';
 import { Heart } from 'lucide-react';
+import { getAssetPath } from '../lib/utils';
 
 export const Proposal: React.FC = () => {
   const [isAccepted, setIsAccepted] = useState(false);
   const [noButtonPos, setNoButtonPos] = useState({ x: 0, y: 0 });
+  const [noMessageIndex, setNoMessageIndex] = useState(0);
   const containerRef = useRef<HTMLDivElement>(null);
+
+  const noMessages = [
+    "THINK AGAIN 😅",
+    "Are you sure? 🥺",
+    "Really? 😢",
+    "Try again! 💖",
+    "No is not an option! 😉",
+    "Nice try! 😂",
+    "You can't say no! ✨"
+  ];
 
   const handleYes = () => {
     setIsAccepted(true);
@@ -32,13 +44,14 @@ export const Proposal: React.FC = () => {
   const moveNoButton = () => {
     if (!containerRef.current) return;
     const rect = containerRef.current.getBoundingClientRect();
-    const maxX = rect.width - 100;
-    const maxY = rect.height - 50;
+    const maxX = rect.width - 150;
+    const maxY = rect.height - 100;
     
     setNoButtonPos({
       x: Math.random() * maxX - maxX / 2,
       y: Math.random() * maxY - maxY / 2,
     });
+    setNoMessageIndex((prev) => (prev + 1) % noMessages.length);
   };
 
   return (
@@ -79,9 +92,9 @@ export const Proposal: React.FC = () => {
                 animate={{ x: noButtonPos.x, y: noButtonPos.y }}
                 onMouseEnter={moveNoButton}
                 onClick={moveNoButton}
-                className="px-8 py-3 bg-gray-200 text-gray-600 rounded-full text-xl font-medium"
+                className="px-8 py-3 bg-gray-200 text-gray-600 rounded-full text-xl font-medium min-w-[160px] transition-colors hover:bg-gray-300"
               >
-                THINK AGAIN 😅
+                {noMessages[noMessageIndex]}
               </motion.button>
             </div>
           </motion.div>
@@ -99,7 +112,7 @@ export const Proposal: React.FC = () => {
               className="mb-8 glass p-4 rounded-[2rem] inline-block shadow-2xl"
             >
               <img 
-                src={`${import.meta.env.BASE_URL}photo_2026-04-11_08-25-42.jpg`} 
+                src={getAssetPath('photo_2026-04-11_08-25-42.jpg')} 
                 alt="Our Celebration" 
                 className="w-64 h-64 object-cover rounded-[1.5rem]"
               />
