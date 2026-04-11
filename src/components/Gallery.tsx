@@ -47,7 +47,6 @@ export const Gallery: React.FC = () => {
                   <img 
                     src={getAssetPath(src)} 
                     alt={`Avinash ${index + 1}`}
-                    referrerPolicy="no-referrer"
                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                   />
                 </div>
@@ -55,7 +54,6 @@ export const Gallery: React.FC = () => {
                   <img 
                     src={getAssetPath(babitaImages[index])} 
                     alt={`Babita ${index + 1}`}
-                    referrerPolicy="no-referrer"
                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                   />
                 </div>
