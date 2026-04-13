@@ -2,7 +2,7 @@ import React, { useState, useRef } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import confetti from 'canvas-confetti';
 import { Heart } from 'lucide-react';
-import { getAssetPath } from '../lib/utils';
+import { SparkleGroup } from './Sparkles';
 
 export const Proposal: React.FC = () => {
   const [isAccepted, setIsAccepted] = useState(false);
@@ -63,10 +63,14 @@ export const Proposal: React.FC = () => {
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 1.1 }}
-            className="text-center z-10"
+            className="text-center z-10 relative"
           >
+            <SparkleGroup count={10} />
             <motion.div
-              animate={{ scale: [1, 1.2, 1] }}
+              animate={{ 
+                scale: [1, 1.2, 1],
+                filter: ["drop-shadow(0 0 0px rgba(255,107,107,0))", "drop-shadow(0 0 20px rgba(255,107,107,0.4))", "drop-shadow(0 0 0px rgba(255,107,107,0))"]
+              }}
               transition={{ repeat: Infinity, duration: 1.5 }}
               className="inline-block mb-8"
             >
@@ -103,37 +107,63 @@ export const Proposal: React.FC = () => {
             key="celebration"
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
-            className="text-center z-10"
+            className="text-center z-10 relative"
           >
+            <SparkleGroup count={25} areaWidth={100} areaHeight={100} />
             <motion.div
               initial={{ scale: 0, rotate: -10 }}
               animate={{ scale: 1, rotate: 0 }}
               transition={{ type: "spring", duration: 1 }}
-              className="mb-8 glass p-4 rounded-[2rem] inline-block shadow-2xl"
+              className="mb-8 glass p-12 rounded-[3rem] inline-block shadow-2xl relative bg-white/40"
             >
-              <img 
-                src={getAssetPath('photo_2026-04-11_08-25-42.jpg')} 
-                alt="Our Celebration" 
-                className="w-64 h-64 object-cover rounded-[1.5rem]"
-              />
+              <motion.div
+                animate={{ 
+                  scale: [1, 1.2, 1],
+                  rotate: [0, 10, -10, 0]
+                }}
+                transition={{ repeat: Infinity, duration: 2 }}
+              >
+                <Heart size={150} className="text-romantic-red fill-romantic-red drop-shadow-2xl" />
+                <motion.span
+                  animate={{ 
+                    y: [0, -50], 
+                    opacity: [0, 1, 0],
+                    scale: [0.5, 1.5]
+                  }}
+                  transition={{ repeat: Infinity, duration: 1.5 }}
+                  className="absolute top-0 left-1/2 -translate-x-1/2 text-6xl"
+                >
+                  💋
+                </motion.span>
+              </motion.div>
             </motion.div>
-            <h2 className="text-6xl md:text-8xl font-script text-romantic-red mb-8">
+            <h2 className="text-6xl md:text-8xl font-script text-romantic-red mb-8 drop-shadow-[0_0_15px_rgba(255,107,107,0.5)]">
               I Love You, Babita! 💖
             </h2>
-            <p className="text-2xl md:text-3xl font-serif text-gray-700 max-w-2xl mx-auto leading-relaxed">
-              You've made me the happiest person alive. I promise to cherish every moment with you, 
+            <p className="text-2xl md:text-3xl font-serif text-gray-700 max-w-2xl mx-auto leading-relaxed italic">
+              "You've made me the happiest person alive. I promise to cherish every moment with you, 
               to support you, and to love you more with each passing day. 
-              Our forever starts now! 💍✨
+              Our forever starts now!" 💍✨
             </p>
             
             <motion.div 
               initial={{ scale: 0 }}
               animate={{ scale: 1 }}
               transition={{ delay: 0.5, type: "spring" }}
-              className="mt-12 flex justify-center gap-4"
+              className="mt-12 flex justify-center gap-6"
             >
-              {Array.from({ length: 5 }).map((_, i) => (
-                <Heart key={i} className="text-romantic-red fill-romantic-red animate-bounce" style={{ animationDelay: `${i * 0.1}s` }} />
+              {Array.from({ length: 7 }).map((_, i) => (
+                <motion.div
+                  key={i}
+                  animate={{ 
+                    y: [0, -20, 0],
+                    scale: [1, 1.2, 1],
+                    filter: ["drop-shadow(0 0 0px rgba(255,107,107,0))", "drop-shadow(0 0 10px rgba(255,107,107,0.6))", "drop-shadow(0 0 0px rgba(255,107,107,0))"]
+                  }}
+                  transition={{ repeat: Infinity, duration: 2, delay: i * 0.2 }}
+                >
+                  <Heart className="text-romantic-red fill-romantic-red" size={32} />
+                </motion.div>
               ))}
             </motion.div>
           </motion.div>

@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'motion/react';
-import { MessageCircle, Phone, Heart, Bell, Smile, Sparkles } from 'lucide-react';
+import { MessageCircle, Phone, Heart, Bell, Smile, Sparkles, Star, Music, Infinity } from 'lucide-react';
+import { SparkleGroup } from './Sparkles';
 
 const journey = [
   {
@@ -51,6 +52,30 @@ const journey = [
     icon: Sparkles,
     color: 'bg-red-100 text-red-600',
   },
+  {
+    day: 'Day 7',
+    date: 'April 11',
+    title: 'Dreaming of our forever 🌟',
+    description: 'I started imagining my life with you by my side. Every dream now includes your beautiful smile.',
+    icon: Star,
+    color: 'bg-blue-100 text-blue-600',
+  },
+  {
+    day: 'Day 8',
+    date: 'April 12',
+    title: 'Our hearts beating as one 🎵',
+    description: 'The connection we share is so deep, it feels like our souls have known each other forever.',
+    icon: Music,
+    color: 'bg-indigo-100 text-indigo-600',
+  },
+  {
+    day: 'Day 9',
+    date: 'April 13',
+    title: 'The most special day... Today! ♾️',
+    description: 'Today is the day I want to tell you how much you mean to me and ask for a lifetime together.',
+    icon: Infinity,
+    color: 'bg-rose-100 text-rose-600',
+  },
 ];
 
 export const Timeline: React.FC = () => {
@@ -65,7 +90,13 @@ export const Timeline: React.FC = () => {
         Our Beautiful Journey
       </motion.h2>
       
-      <div className="relative border-l-2 border-pink-200 ml-4 md:ml-0 md:left-1/2">
+      <div className="relative ml-4 md:ml-0 md:left-1/2">
+        <SparkleGroup count={15} areaWidth={200} areaHeight={100} />
+        <motion.div 
+          animate={{ opacity: [0.2, 0.5, 0.2] }}
+          transition={{ repeat: Infinity, duration: 3 }}
+          className="absolute left-0 md:left-0 top-0 bottom-0 w-0.5 bg-pink-300"
+        />
         {journey.map((item, index) => (
           <motion.div
             key={index}
@@ -77,16 +108,19 @@ export const Timeline: React.FC = () => {
               index % 2 === 0 ? 'md:pr-12 md:text-right md:-left-1/2' : 'md:pl-12 md:left-0'
             }`}
           >
-            <div className={`absolute top-0 w-10 h-10 rounded-full ${item.color} flex items-center justify-center shadow-lg z-10 
-              ${index % 2 === 0 ? '-left-5 md:-right-5 md:left-auto' : '-left-5'}`}>
-              <item.icon size={20} />
+            <div className={`absolute top-0 w-12 h-12 rounded-full ${item.color} flex items-center justify-center shadow-[0_0_15px_rgba(255,107,107,0.3)] z-10 
+              ${index % 2 === 0 ? '-left-6 md:-right-6 md:left-auto' : '-left-6'}`}>
+              <item.icon size={24} className="animate-pulse" />
             </div>
             
-            <div className="glass p-6 rounded-2xl hover:scale-105 transition-transform duration-300">
-              <span className="text-romantic-red font-script text-2xl block mb-1">{item.day}</span>
-              <span className="text-sm text-gray-500 font-medium mb-2 block">{item.date}</span>
-              <h3 className="text-xl font-bold text-gray-800 mb-2">{item.title}</h3>
-              <p className="text-gray-600 leading-relaxed">{item.description}</p>
+            <div className="glass p-8 rounded-3xl hover:scale-105 transition-all duration-300 border border-white/40 hover:shadow-[0_0_20px_rgba(255,107,107,0.2)]">
+              <span className="text-romantic-red font-script text-3xl block mb-2">{item.day}</span>
+              <div className="flex items-center gap-2 mb-3">
+                <Sparkles size={14} className="text-romantic-red opacity-50" />
+                <span className="text-sm text-gray-500 font-medium tracking-wider uppercase">{item.date}</span>
+              </div>
+              <h3 className="text-2xl font-bold text-gray-800 mb-3 font-serif">{item.title}</h3>
+              <p className="text-gray-600 leading-relaxed text-lg italic">"{item.description}"</p>
             </div>
           </motion.div>
         ))}
