@@ -5,13 +5,16 @@
 
 import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence, useScroll, useTransform } from 'motion/react';
-import { Heart, Music, Volume2, VolumeX, ChevronDown, Upload } from 'lucide-react';
+import { Heart, Music, Volume2, VolumeX, ChevronDown, Upload, MessageCircle } from 'lucide-react';
 import { FloatingHearts } from './components/FloatingHearts';
 import { Petals } from './components/Petals';
 import { Timeline } from './components/Timeline';
 import { Gallery } from './components/Gallery';
 import { Proposal } from './components/Proposal';
 import { SparkleGroup } from './components/Sparkles';
+import { ClickHearts } from './components/ClickHearts';
+import { Countdown } from './components/Countdown';
+import { Shayari } from './components/Shayari';
 import { cn } from './lib/utils';
 
 export default function App() {
@@ -105,6 +108,7 @@ export default function App() {
 
   return (
     <div className="relative min-h-screen font-sans selection:bg-romantic-red/30 overflow-x-hidden">
+      <ClickHearts />
       {/* Dreamy Overlay */}
       <motion.div 
         style={{ y: slowY }}
@@ -284,6 +288,12 @@ export default function App() {
             {/* Love Gallery */}
             <Gallery />
 
+            {/* Anniversary Countdown */}
+            <Countdown />
+
+            {/* Romantic Shayari Section */}
+            <Shayari />
+
             {/* Love Notes Section */}
             <section className="py-20 px-4 bg-white/20 relative overflow-hidden">
               <motion.div 
@@ -421,7 +431,7 @@ export default function App() {
             {/* Footer */}
             <footer className="py-10 text-center text-gray-500 font-serif italic">
               <p>Made with ❤️ by Avinash for Babita</p>
-              <p className="text-sm mt-2">April 11, 2026</p>
+              <p className="text-sm mt-2">April 17, 2026</p>
             </footer>
           </motion.main>
         )}
