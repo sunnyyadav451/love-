@@ -431,7 +431,7 @@ export default function App() {
             {/* Footer */}
             <footer className="py-10 text-center text-gray-500 font-serif italic">
               <p>Made with ❤️ by Avinash for Babita</p>
-              <p className="text-sm mt-2">April 17, 2026</p>
+              <p className="text-sm mt-2">May 3, 2026</p>
             </footer>
           </motion.main>
         )}
